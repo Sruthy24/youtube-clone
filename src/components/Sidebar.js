@@ -1,36 +1,67 @@
 import React from "react";
-import { List,ListItem,ListItemText } from "@mui/material";
+import {
+  Home,
+  Whatshot,
+  MusicNote,
+  SportsEsports,
+  Newspaper,
+  School,
+  EmojiEvents,
+  Checkroom,
+  History,
+  ThumbUp
+} from "@mui/icons-material";
 
-function Sidebar(){
+import { Box } from "@mui/material";
 
-return(
+const menu = [
+  { icon: <Home />, name: "Home" },
+  { icon: <Whatshot />, name: "Trending" },
+  { icon: <MusicNote />, name: "Music" },
+  { icon: <SportsEsports />, name: "Gaming" },
+  { icon: <Newspaper />, name: "News" },
+  { icon: <EmojiEvents />, name: "Sports" },
+  { icon: <School />, name: "Learning" },
+  { icon: <Checkroom />, name: "Fashion" },
+  { icon: <ThumbUp />, name: "Liked Videos" },
+  { icon: <History />, name: "History" }
+];
 
-<div style={{width:"200px",borderRight:"1px solid lightgray"}}>
-
-<List>
-
-<ListItem button>
-<ListItemText primary="Home"/>
-</ListItem>
-
-<ListItem button>
-<ListItemText primary="Trending"/>
-</ListItem>
-
-<ListItem button>
-<ListItemText primary="Subscriptions"/>
-</ListItem>
-
-<ListItem button>
-<ListItemText primary="Library"/>
-</ListItem>
-
-</List>
-
-</div>
-
-);
-
+function Sidebar() {
+  return (
+    <Box
+      sx={{
+        width: "220px",
+        background: "#0f0f0f",
+        color: "white",
+        height: "100vh",
+        paddingTop: "15px",
+        borderRight: "1px solid #303030",
+        position: "sticky",
+        top: "64px"
+      }}
+    >
+      {menu.map((item, index) => (
+        <Box
+          key={index}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+            padding: "12px 20px",
+            cursor: "pointer",
+            "&:hover": {
+              background: "#272727",
+              borderRadius: "10px"
+            }
+          }}
+        >
+          {item.icon}
+          <span>{item.name}</span>
+        </Box>
+      ))}
+    </Box>
+  );
 }
 
 export default Sidebar;
