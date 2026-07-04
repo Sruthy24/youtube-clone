@@ -9,7 +9,7 @@ function Feed() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetchVideos("trending")
+    fetchVideos("popular movies")
       .then((data) => setVideos(data.items))
       .catch((err) => console.log(err));
   }, []);
