@@ -1,45 +1,29 @@
-import React from "react";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import VideoCard from "./components/VideoCard";
-import videos from "./data";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Feed from "./components/Feed";
+import SearchFeed from "./components/SearchFeed";
+import VideoDetail from "./components/VideoDetail";
 
-function App(){
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
 
-return(
+      <Routes>
+        <Route path="/" element={<Feed />} />
 
-<div>
+        <Route
+          path="/search/:searchTerm"
+          element={<SearchFeed />}
+        />
 
-<Header/>
-
-<div style={{display:"flex"}}>
-
-<Sidebar/>
-
-<div
-style={{
-display:"grid",
-gridTemplateColumns:"repeat(auto-fill,minmax(320px,1fr))",
-gap:"20px",
-padding:"20px",
-width:"100%"
-}}
->
-
-{
-videos.map((video,index)=>(
-<VideoCard key={index} video={video}/>
-))
-}
-
-</div>
-
-</div>
-
-</div>
-
-);
-
+        <Route
+          path="/video/:id"
+          element={<VideoDetail />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
