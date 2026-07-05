@@ -10,7 +10,7 @@ function Feed() {
 
   useEffect(() => {
    searchVideos("popular movies")
-      .then((data) => setVideos(data.items))
+      .then((data) => setVideos(data))
       .catch((err) => console.log(err));
   }, []);
 
