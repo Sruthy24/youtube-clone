@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import VideoCard from "./VideoCard";
-import { fetchVideos } from "../utils/api";
+import { searchVideos } from "../utils/api";
 
 function SearchFeed() {
 
@@ -11,8 +11,8 @@ function SearchFeed() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    fetchVideos(searchTerm)
-      .then((data) => setVideos(data.items))
+    searchVideos(searchTerm)
+      .then((data) => setVideos(data))
       .catch((err) => console.log(err));
   }, [searchTerm]);
 
