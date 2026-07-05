@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import VideoCard from "./VideoCard";
-import { fetchVideos } from "../utils/api";
+import { getRelatedVideos } from "../utils/api";
+import { useParams } from "react-router-dom";
 
 function RecommendedVideos() {
-
+const { id } = useParams();
   const [videos, setVideos] = useState([]);
 
-  useEffect(() => {
+ useEffect(() => {
 
-    fetchVideos("popular")
-
-      .then((data) => setVideos(data.items))
-
+    getRelatedVideos(id)
+      .then((data) => setVideos(data))
       .catch(console.log);
 
-  }, []);
+}, [id]);
 
   return (
 
