@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { fetchVideos } from "../utils/api";
+import { getVideoDetails } from "../utils/api";
 import RecommendedVideos from "./RecommendedVideos";
 
 function VideoDetail() {
@@ -12,11 +12,9 @@ function VideoDetail() {
   const [video, setVideo] = useState(null);
 
   useEffect(() => {
-    fetchVideos(id).then((data) => {
-      if (data.items.length > 0) {
-        setVideo(data.items[0]);
-      }
-    });
+    getVideoDetails(id).then((data)=>{
+setVideo(data);
+});
   }, [id]);
 
   return (
