@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import Sidebar from "./Sidebar";
 import VideoCard from "./VideoCard";
-import { fetchVideos } from "../utils/api";
+import { searchVideos } from "../utils/api";
 
 function Feed() {
 
