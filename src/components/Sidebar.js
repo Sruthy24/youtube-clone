@@ -29,26 +29,24 @@ const menu = [
 ];
 
 function Sidebar() {
+
   const navigate = useNavigate();
+
   return (
-<Box
-  key={index}
-  onClick={() => navigate(`/search/${item.category}`)}
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    gap: 2,
-    padding: "12px 20px",
-    cursor: "pointer",
-    "&:hover": {
-      background: "#3d3d3d",
-      borderRadius: "10px"
-    }
-  }}
->
+    <Box
+      sx={{
+        width: "220px",
+        background: "#0f0f0f",
+        color: "white",
+        height: "100vh",
+        paddingTop: "15px",
+        borderRight: "1px solid #303030"
+      }}
+    >
       {menu.map((item, index) => (
         <Box
           key={index}
+          onClick={() => navigate(`/search/${item.category}`)}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -56,7 +54,7 @@ function Sidebar() {
             padding: "12px 20px",
             cursor: "pointer",
             "&:hover": {
-              background: "#272727",
+              background: "#3d3d3d",
               borderRadius: "10px"
             }
           }}
