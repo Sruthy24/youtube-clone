@@ -13,34 +13,38 @@ import {
 } from "@mui/icons-material";
 
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const menu = [
-  { icon: <Home />, name: "Home" },
-  { icon: <Whatshot />, name: "Trending" },
-  { icon: <MusicNote />, name: "Music" },
-  { icon: <SportsEsports />, name: "Gaming" },
-  { icon: <Newspaper />, name: "News" },
-  { icon: <EmojiEvents />, name: "Sports" },
-  { icon: <School />, name: "Learning" },
-  { icon: <Checkroom />, name: "Fashion" },
-  { icon: <ThumbUp />, name: "Liked Videos" },
-  { icon: <History />, name: "History" }
+  { icon: <Home />, name: "Home", category: "trending" },
+  { icon: <Whatshot />, name: "Trending", category: "trending" },
+  { icon: <MusicNote />, name: "Music", category: "music" },
+  { icon: <SportsEsports />, name: "Gaming", category: "gaming" },
+  { icon: <Newspaper />, name: "News", category: "news" },
+  { icon: <EmojiEvents />, name: "Sports", category: "sports" },
+  { icon: <School />, name: "Learning", category: "learning" },
+  { icon: <Checkroom />, name: "Fashion", category: "fashion" },
+  { icon: <ThumbUp />, name: "Liked Videos", category: "popular" },
+  { icon: <History />, name: "History", category: "history" }
 ];
 
 function Sidebar() {
   return (
-    <Box
-      sx={{
-        width: "220px",
-        background: "#0f0f0f",
-        color: "white",
-        height: "100vh",
-        paddingTop: "15px",
-        borderRight: "1px solid #303030",
-        position: "sticky",
-        top: "64px"
-      }}
-    >
+<Box
+  key={index}
+  onClick={() => navigate(`/search/${item.category}`)}
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    gap: 2,
+    padding: "12px 20px",
+    cursor: "pointer",
+    "&:hover": {
+      background: "#3d3d3d",
+      borderRadius: "10px"
+    }
+  }}
+>
       {menu.map((item, index) => (
         <Box
           key={index}
