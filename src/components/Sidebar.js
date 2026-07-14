@@ -29,6 +29,7 @@ const menu = [
 ];
 
 function Sidebar() {
+  const navigate = useNavigate();
   return (
 <Box
   key={index}
