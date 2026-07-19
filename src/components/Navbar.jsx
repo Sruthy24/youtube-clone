@@ -19,9 +19,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-
   const [searchTerm, setSearchTerm] = useState("");
-
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -30,105 +28,121 @@ function Navbar() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <AppBar
       position="sticky"
       sx={{
-        background: "#0f0f0f",
+        backgroundColor: "#0f0f0f",
         boxShadow: "none",
-        borderBottom: "1px solid #303030"
+        borderBottom: "1px solid #303030",
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        {/* Left */}
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <IconButton sx={{ color: "white" }}>
+            <Menu />
+          </IconButton>
 
-        <IconButton sx={{ color: "white" }}>
-          <Menu />
-        </IconButton>
+          <Box
+            component="img"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+            alt="YouTube"
+            sx={{
+              width: { xs: 90, md: 120 },
+              ml: 1,
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/")}
+          />
+        </Box>
 
-        <h2
-          style={{
-            color: "red",
-            marginLeft: 10,
-            cursor: "pointer"
-          }}
-          onClick={() => navigate("/")}
-        >
-          YouTube
-        </h2>
-
-        <Box sx={{ flex: 1 }} />
-
+        {/* Center */}
         <Box
           sx={{
-               display: {
-      xs: "none",
-      md: "flex"
-    }
-
-           width: {
-  xs: "60%",
-  sm: "50%",
-  md: "45%"
-}
+            display: "flex",
+            alignItems: "center",
+            width: {
+              xs: "50%",
+              sm: "55%",
+              md: "45%",
+            },
             border: "1px solid #303030",
             borderRadius: "25px",
             overflow: "hidden",
-            background: "#121212"
+            backgroundColor: "#121212",
           }}
         >
-
           <InputBase
             placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyPress}
             sx={{
               ml: 2,
               flex: 1,
-              color: "white"
+              color: "white",
             }}
           />
 
           <IconButton
             onClick={handleSearch}
             sx={{
-              background: "#222",
-              color: "white"
+              color: "white",
+              backgroundColor: "#222",
+              borderRadius: 0,
             }}
           >
             <Search />
           </IconButton>
-    
-
         </Box>
 
-        <IconButton
-          sx={{
-            color: "white",
-            ml: 2
-          }}
-        >
-          <Mic />
-        </IconButton>
+        {/* Right */}
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <IconButton
+            sx={{
+              color: "white",
+              display: { xs: "none", sm: "flex" },
+            }}
+          >
+            <Mic />
+          </IconButton>
 
-        <Box sx={{ flex: 1 }} />
+          <IconButton
+            sx={{
+              color: "white",
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            <VideoCall />
+          </IconButton>
 
-        <IconButton sx={{ color: "white" }}>
-          <VideoCall />
-        </IconButton>
+          <IconButton
+            sx={{
+              color: "white",
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            <Notifications />
+          </IconButton>
 
-        <IconButton sx={{ color: "white" }}>
-          <Notifications />
-        </IconButton>
-
-        <Avatar
-          sx={{
-            ml: 2,
-            bgcolor: "red"
-          }}
-        >
-          S
-        </Avatar>
-
+          <Avatar
+            sx={{
+              ml: 1,
+              bgcolor: "red",
+              width: 35,
+              height: 35,
+            }}
+          >
+            S
+          </Avatar>
+        </Box>
       </Toolbar>
     </AppBar>
   );
