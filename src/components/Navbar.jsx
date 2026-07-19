@@ -60,8 +60,16 @@ function Navbar() {
 
         <Box
           sx={{
-            display: "flex",
-            width: "45%",
+               display: {
+      xs: "none",
+      md: "flex"
+    }
+
+           width: {
+  xs: "60%",
+  sm: "50%",
+  md: "45%"
+}
             border: "1px solid #303030",
             borderRadius: "25px",
             overflow: "hidden",
@@ -89,6 +97,7 @@ function Navbar() {
           >
             <Search />
           </IconButton>
+    
 
         </Box>
 
