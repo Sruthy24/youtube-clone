@@ -6,7 +6,6 @@ import VideoCard from "./VideoCard";
 import { searchVideos } from "../utils/api";
 
 function SearchFeed() {
-
   const { searchTerm } = useParams();
   const [videos, setVideos] = useState([]);
 
@@ -17,17 +16,27 @@ function SearchFeed() {
   }, [searchTerm]);
 
   return (
-    <Box sx={{ display: "flex" }}>
-
+    <Box
+      sx={{
+        display: "flex",
+        background: "#0f0f0f",
+        minHeight: "100vh"
+      }}
+    >
       <Sidebar />
 
       <Box
         sx={{
           flex: 1,
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2,1fr)",
+            md: "repeat(3,1fr)",
+            lg: "repeat(4,1fr)"
+          },
           gap: 3,
-          p: 3
+          p: 2
         }}
       >
         {videos.map((video) => (
@@ -37,7 +46,6 @@ function SearchFeed() {
           />
         ))}
       </Box>
-
     </Box>
   );
 }
