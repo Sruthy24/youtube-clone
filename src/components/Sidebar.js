@@ -12,7 +12,7 @@ import {
   ThumbUp
 } from "@mui/icons-material";
 
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const menu = [
@@ -29,18 +29,19 @@ const menu = [
 ];
 
 function Sidebar() {
-
   const navigate = useNavigate();
 
   return (
     <Box
       sx={{
-        width: "220px",
+        width: { xs: 70, md: 220 },
         background: "#0f0f0f",
         color: "white",
-        height: "100vh",
-        paddingTop: "15px",
-        borderRight: "1px solid #303030"
+        height: "calc(100vh - 64px)",
+        borderRight: "1px solid #303030",
+        position: "sticky",
+        top: "64px",
+        overflowY: "auto"
       }}
     >
       {menu.map((item, index) => (
@@ -51,16 +52,25 @@ function Sidebar() {
             display: "flex",
             alignItems: "center",
             gap: 2,
-            padding: "12px 20px",
+            p: 2,
             cursor: "pointer",
             "&:hover": {
-              background: "#3d3d3d",
-              borderRadius: "10px"
+              background: "#272727"
             }
           }}
         >
           {item.icon}
-          <span>{item.name}</span>
+
+          <Typography
+            sx={{
+              display: {
+                xs: "none",
+                md: "block"
+              }
+            }}
+          >
+            {item.name}
+          </Typography>
         </Box>
       ))}
     </Box>
